@@ -70,30 +70,31 @@ B = list(b)
 T = 1000
 
 
-def dot1():
+def dot_python():
     dot = 0
     for i in range(len(A)):
         dot += A[i] * B[i]
     return dot
 
 
-def dot2():
+def dot_numpy():
     return np.dot(a, b)
 
 
 start = timer()
 for i in range(T):
-    dot1()
+    dot_python()
 end = timer()
 t1 = end - start
 
 start = timer()
 for i in range(T):
-    dot2()
+    dot_numpy()
 end = timer()
 t2 = end - start
 
-print(f'list calculation time {t1}')
-print(f'np.dot calculation time {t2}')
-print(f'ratio {t1/t2}')
+# https://mkaz.blog/code/python-string-format-cookbook/
+print(f'python list calculation time {t1:.6f}')
+print(f'numpy np.dot calculation time {t2:.6f}')
+print(f'ratio {t1/t2:.2f}')
 print('')
